@@ -3,6 +3,9 @@ const morgan = require("morgan"); // For log when has request
 const handlebars = require("express-handlebars");
 const { engine } = handlebars;
 const path = require("path");
+
+const route = require("./routes");
+
 const app = express();
 const port = 3000;
 
@@ -30,24 +33,8 @@ app.use(
 );
 app.use(express.json());
 
-// Định nghĩa route
-app.get("/", (req, res) => {
-  res.render("home");
-});
-
-app.get("/news", (req, res) => {
-  res.render("news");
-});
-
-app.get("/search", (req, res) => {
-  // console.log(req.query.q); // lay queryparams
-  res.render("search");
-});
-
-app.post("/search", (req, res) => {
-  console.log(req.body); // lay formdata
-  res.send("");
-});
+// routes init
+route(app);
 
 // 127.0.0.1 - localhost
 
