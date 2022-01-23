@@ -6,8 +6,7 @@
   "scripts": {
     "start": "nodemon --inspect src/index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "node-sass --watch src/resources/scss/ -o src/public/css/",
-    "beautiful": "lint-staged"
+    "watch": "node-sass --watch src/resources/scss/ -o src/public/css/"
   },
   "keywords": [
     "nodejs"
@@ -20,6 +19,11 @@
   },  
   "lint-staged": {
     "src/**/*.{js,json,scss}": "prettier --single-quote --trailing-comma all --write"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },  
   "devDependencies": {
     "husky": "^7.0.4",
